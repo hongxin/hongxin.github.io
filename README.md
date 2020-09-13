@@ -1,2 +1,2 @@
 # hongxin.github.io
-My Simple Blog
+A Simple Blog for my courses
