@@ -3,159 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hongxin Zhang</title>
+<title>Hongxin Zhang · Zhejiang University</title>
 <meta name="description" content="Hongxin Zhang — Associate Professor at Zhejiang University. Computer Graphics, Visualization, AI-assisted Development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0a0e14;
-  --surface: #131921;
-  --surface2: #1a2130;
-  --border: #253042;
-  --text: #b8c5d4;
-  --text-dim: #6b7d93;
-  --text-bright: #e8eef5;
-  --accent: #58a6ff;
-  --accent2: #a78bfa;
-  --green: #7ee787;
-  --orange: #f0a000;
-  --cyan: #00f0f0;
-  --pink: #f778ba;
+  --zju-blue: #003F88;
+  --zju-blue-light: #1a5fa8;
+  --zju-blue-pale: #e8f0fb;
+  --zju-red: #B01F24;
+  --zju-red-pale: #fce8e8;
+  --bg: #f7f9fc;
+  --white: #ffffff;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --border-light: #eef2f7;
+  --text: #1e293b;
+  --text-secondary: #475569;
+  --text-dim: #94a3b8;
+  --accent: #003F88;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+  --radius: 12px;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
   min-height: 100vh;
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-a { color: inherit; text-decoration: none; }
+a { color: var(--zju-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-/* ===== Hero Section ===== */
-.hero {
-  position: relative;
-  min-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-bg canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 0%, var(--bg) 100%);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 60px 24px 40px;
-}
-
-.hero-name {
-  font-size: 48px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--cyan) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 8px;
-}
-
-.hero-role {
-  font-size: 18px;
-  color: var(--text-dim);
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
-
-.hero-links {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-top: 24px;
-  flex-wrap: wrap;
-}
-
-.hero-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: var(--text);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  transition: all 0.25s;
-}
-
-.hero-link:hover {
-  border-color: var(--accent);
-  background: rgba(88,166,255,0.08);
-  color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.hero-link svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-
-/* Nav bar with lang switch */
+/* ===== Nav ===== */
 .nav {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  background: rgba(10, 14, 20, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(37, 48, 66, 0.5);
 }
 
 .nav-brand {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-bright);
-  letter-spacing: 0.3px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--zju-blue);
 }
 
-.lang-switch {
+.nav-links {
   display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.nav-links a:hover { color: var(--zju-blue); text-decoration: none; }
+
+.lang-switch {
+  display: inline-flex;
   border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
+  margin-left: 8px;
 }
 
 .lang-btn {
-  padding: 4px 14px;
+  padding: 3px 12px;
   font-size: 12px;
   font-family: inherit;
   background: transparent;
@@ -163,88 +100,168 @@ a { color: inherit; text-decoration: none; }
   border: none;
   cursor: pointer;
   transition: all 0.15s;
+  font-weight: 500;
 }
 
 .lang-btn.active {
-  background: var(--accent);
-  color: var(--bg);
-  font-weight: 600;
+  background: var(--zju-blue);
+  color: #fff;
 }
 
-.lang-btn:not(.active):hover { background: rgba(255,255,255,0.05); }
+.lang-btn:not(.active):hover { background: var(--zju-blue-pale); }
 
-/* ===== Main Content ===== */
-.main {
-  max-width: 920px;
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(135deg, var(--zju-blue) 0%, var(--zju-blue-light) 60%, #2d7dd2 100%);
+  color: #fff;
+  padding: 56px 24px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  bottom: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+
+.hero-inner {
+  max-width: 960px;
   margin: 0 auto;
-  padding: 0 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.hero-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 800;
+  flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,0.25);
+}
+
+.hero-info h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.hero-role {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+.hero-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.2s;
+}
+
+.hero-link:hover {
+  background: rgba(255,255,255,0.22);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.hero-link svg { width: 14px; height: 14px; fill: currentColor; }
+
+.hero-interests {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.interest-pill {
+  padding: 4px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* ===== Main ===== */
+.main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
 }
 
 /* Section */
-.section {
-  margin-bottom: 56px;
-  animation: fadeUp 0.6s ease-out both;
-}
-
-.section:nth-child(1) { animation-delay: 0.1s; }
-.section:nth-child(2) { animation-delay: 0.2s; }
-.section:nth-child(3) { animation-delay: 0.3s; }
-.section:nth-child(4) { animation-delay: 0.4s; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.section { margin-bottom: 40px; }
 
 .section-header {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--zju-blue);
 }
 
 .section-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 15px;
   flex-shrink: 0;
 }
 
 .section-title {
   font-size: 20px;
   font-weight: 700;
-  color: var(--text-bright);
+  color: var(--zju-blue);
 }
-
-/* Interests pills */
-.interests {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
-}
-
-.interest {
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  border: 1px solid;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.interest:hover { transform: translateY(-2px); }
-
-.interest:nth-child(1) { color: var(--accent); border-color: rgba(88,166,255,0.3); background: rgba(88,166,255,0.08); }
-.interest:nth-child(2) { color: var(--accent2); border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.08); }
-.interest:nth-child(3) { color: var(--green); border-color: rgba(126,231,135,0.3); background: rgba(126,231,135,0.08); }
-.interest:nth-child(4) { color: var(--orange); border-color: rgba(240,160,0,0.3); background: rgba(240,160,0,0.08); }
-.interest:nth-child(5) { color: var(--cyan); border-color: rgba(0,240,240,0.3); background: rgba(0,240,240,0.08); }
-.interest:nth-child(6) { color: var(--pink); border-color: rgba(247,120,186,0.3); background: rgba(247,120,186,0.08); }
 
 /* Project cards */
 .projects {
@@ -256,48 +273,39 @@ a { color: inherit; text-decoration: none; }
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 20px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  opacity: 0;
-  transition: opacity 0.3s;
+  transition: all 0.25s;
+  box-shadow: var(--shadow-sm);
 }
 
 .card:hover {
-  border-color: rgba(88,166,255,0.4);
+  box-shadow: var(--shadow-md);
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  border-color: var(--zju-blue);
+  text-decoration: none;
 }
 
-.card:hover::before { opacity: 1; }
-
-.card-emoji {
-  font-size: 28px;
-  margin-bottom: 10px;
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
 }
+
+.card-emoji { font-size: 24px; }
 
 .card-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
-  color: var(--text-bright);
-  margin-bottom: 6px;
+  color: var(--text);
 }
 
 .card-desc {
   font-size: 13px;
-  color: var(--text-dim);
+  color: var(--text-secondary);
   flex: 1;
   line-height: 1.5;
 }
@@ -312,267 +320,328 @@ a { color: inherit; text-decoration: none; }
 .tag {
   font-size: 11px;
   padding: 2px 10px;
-  border-radius: 12px;
-  background: rgba(88,166,255,0.08);
-  color: var(--accent);
-  border: 1px solid rgba(88,166,255,0.15);
+  border-radius: 10px;
+  background: var(--zju-blue-pale);
+  color: var(--zju-blue);
+  font-weight: 500;
 }
 
-/* Teaching */
-.teaching-list {
+/* ===== Publications ===== */
+.pub-filters {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
+
+.pub-filter {
+  padding: 5px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pub-filter.active {
+  background: var(--zju-blue);
+  color: #fff;
+  border-color: var(--zju-blue);
+}
+
+.pub-filter:not(.active):hover {
+  border-color: var(--zju-blue);
+  color: var(--zju-blue);
+}
+
+.pub-year {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--zju-blue);
+  margin: 18px 0 8px;
+  padding-left: 2px;
+}
+
+.pub-year:first-of-type { margin-top: 0; }
+
+.pub-item {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.pub-item:hover {
+  border-color: var(--zju-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.pub-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.pub-authors {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.pub-authors .me { color: var(--zju-blue); font-weight: 600; }
+
+.pub-venue {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.pub-venue .venue-name { font-weight: 600; font-style: normal; }
+
+/* Teaching */
+.teaching-list { display: flex; flex-direction: column; gap: 10px; }
 
 .teaching-item {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px 20px;
+  border-radius: var(--radius);
+  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  transition: all 0.25s;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
 }
 
 .teaching-item:hover {
-  border-color: rgba(88,166,255,0.4);
+  box-shadow: var(--shadow-md);
   transform: translateX(4px);
+  text-decoration: none;
+  border-color: var(--zju-blue);
 }
 
-.teaching-name {
-  font-weight: 700;
-  color: var(--text-bright);
-  font-size: 15px;
-}
+.teaching-name { font-weight: 700; font-size: 15px; color: var(--text); }
+.teaching-desc { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
 
-.teaching-desc {
-  font-size: 13px;
-  color: var(--text-dim);
-  margin-top: 2px;
-}
-
-.teaching-badge {
+.badge {
   flex-shrink: 0;
-  padding: 4px 12px;
-  border-radius: 14px;
+  padding: 3px 12px;
+  border-radius: 12px;
   font-size: 11px;
   font-weight: 600;
 }
 
-.badge-phd {
-  color: var(--accent2);
-  background: rgba(167,139,250,0.1);
-  border: 1px solid rgba(167,139,250,0.2);
-}
-
-.badge-undergrad {
-  color: var(--green);
-  background: rgba(126,231,135,0.1);
-  border: 1px solid rgba(126,231,135,0.2);
-}
+.badge-phd { color: var(--zju-blue); background: var(--zju-blue-pale); }
+.badge-undergrad { color: #047857; background: #ecfdf5; }
 
 /* Philosophy */
 .philosophy {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 28px 32px;
-  position: relative;
-  overflow: hidden;
-}
-
-.philosophy::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--accent), var(--accent2), var(--green));
+  border-left: 4px solid var(--zju-blue);
+  box-shadow: var(--shadow-sm);
 }
 
 .philosophy-text {
   font-size: 18px;
-  color: var(--text-bright);
+  color: var(--text);
   font-style: italic;
   line-height: 1.7;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .philosophy-author {
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 13px;
   color: var(--text-dim);
   font-style: normal;
 }
 
 .philosophy-sub {
-  margin-top: 16px;
+  margin-top: 14px;
   font-size: 14px;
-  color: var(--text);
+  color: var(--text-secondary);
   line-height: 1.6;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  padding: 24px;
+  padding: 20px 24px;
   color: var(--text-dim);
   font-size: 12px;
   border-top: 1px solid var(--border);
-  max-width: 920px;
-  margin: 0 auto;
+  background: var(--white);
+}
+
+.footer-zju {
+  color: var(--zju-blue);
+  font-weight: 600;
 }
 
 /* Responsive */
 @media (max-width: 640px) {
-  .hero-name { font-size: 34px; }
-  .hero-role { font-size: 15px; }
-  .hero { min-height: 340px; }
+  .hero-top { flex-direction: column; text-align: center; }
+  .hero-info h1 { font-size: 26px; }
+  .hero-links { justify-content: center; }
+  .hero-interests { justify-content: center; }
   .projects { grid-template-columns: 1fr; }
   .teaching-item { flex-direction: column; align-items: flex-start; }
   .philosophy { padding: 20px 24px; }
-  .philosophy-text { font-size: 16px; }
-  .nav-brand { display: none; }
+  .nav-links a.hide-mobile { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- Fixed Nav -->
+<!-- Nav -->
 <nav class="nav">
-  <div class="nav-brand" data-i18n="nav_brand">Hongxin Zhang</div>
-  <div class="lang-switch">
-    <button class="lang-btn active" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="zh">中文</button>
+  <div class="nav-inner">
+    <div class="nav-brand" data-i18n="nav_brand">Hongxin Zhang</div>
+    <div class="nav-links">
+      <a href="#projects" class="hide-mobile" data-i18n="nav_proj">Projects</a>
+      <a href="#publications" class="hide-mobile" data-i18n="nav_pubs">Publications</a>
+      <a href="#teaching" class="hide-mobile" data-i18n="nav_teach">Teaching</a>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="zh">中文</button>
+      </div>
+    </div>
   </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-bg"><canvas id="hero-canvas"></canvas></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1 class="hero-name" data-i18n="name">Hongxin Zhang</h1>
-    <p class="hero-role" data-i18n="tagline">Associate Professor · Zhejiang University</p>
-    <div class="hero-links">
-      <a class="hero-link" href="http://www.cad.zju.edu.cn/home/zhx/" target="_blank">
-        <svg viewBox="0 0 16 16"><path d="M0 8a8 8 0 1116 0A8 8 0 010 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 005.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 01.64-1.539 6.7 6.7 0 01.597-.933A7.025 7.025 0 002.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 00-.656 2.5h2.49zM4.847 5a12.5 12.5 0 00-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 00-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 00.337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 01-.597-.933A9.268 9.268 0 014.09 12H2.255a7.024 7.024 0 003.072 2.472zM3.82 11a13.652 13.652 0 01-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0013.745 12H11.91a9.27 9.27 0 01-.64 1.539 6.688 6.688 0 01-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 01-.312 2.5zm2.802-3.5a6.959 6.959 0 00-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 00-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 00-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/></svg>
-        <span data-i18n="website">Website</span>
-      </a>
-      <a class="hero-link" href="https://github.com/hongxin" target="_blank">
-        <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        GitHub
-      </a>
-      <a class="hero-link" href="https://hongxin.github.io/build-your-own-x/" target="_blank">
-        <svg viewBox="0 0 16 16"><path d="M4.715 6.542L3.343 7.914a3 3 0 104.243 4.243l1.828-1.829A3 3 0 008.586 5.5L8 6.086a1.002 1.002 0 00-.154.199 2 2 0 01.861 3.337L6.88 11.45a2 2 0 11-2.83-2.83l.793-.792a4.018 4.018 0 01-.128-1.287z"/><path d="M6.586 4.672A3 3 0 007.414 9.5l.775-.776a2 2 0 01-.896-3.346L9.12 3.55a2 2 0 112.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 10-4.243-4.243L6.586 4.672z"/></svg>
-        <span data-i18n="projects_link">Projects</span>
-      </a>
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div class="hero-avatar">HZ</div>
+      <div class="hero-info">
+        <h1 data-i18n="name">Hongxin Zhang</h1>
+        <div class="hero-role" data-i18n="tagline">Associate Professor · Zhejiang University</div>
+        <div class="hero-links">
+          <a class="hero-link" href="http://www.cad.zju.edu.cn/home/zhx/" target="_blank">
+            <svg viewBox="0 0 16 16"><path d="M0 8a8 8 0 1116 0A8 8 0 010 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 005.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 01.64-1.539 6.7 6.7 0 01.597-.933A7.025 7.025 0 002.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 00-.656 2.5h2.49zM4.847 5a12.5 12.5 0 00-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 00-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 00.337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 01-.597-.933A9.268 9.268 0 014.09 12H2.255a7.024 7.024 0 003.072 2.472zM3.82 11a13.652 13.652 0 01-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0013.745 12H11.91a9.27 9.27 0 01-.64 1.539 6.688 6.688 0 01-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 01-.312 2.5zm2.802-3.5a6.959 6.959 0 00-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 00-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 00-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/></svg>
+            <span data-i18n="website">Homepage</span>
+          </a>
+          <a class="hero-link" href="https://github.com/hongxin" target="_blank">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+          <a class="hero-link" href="https://scholar.google.com/citations?user=NQZdq10AAAAJ" target="_blank">
+            <svg viewBox="0 0 16 16"><path d="M5.065.158A.75.75 0 015.5 0h5a.75.75 0 01.435.158l4.5 3.2A.75.75 0 0116 4v8a.75.75 0 01-.75.75H.75A.75.75 0 010 12V4a.75.75 0 01.065-.642l4.5-3.2zM8 10a2 2 0 100-4 2 2 0 000 4z"/></svg>
+            Scholar
+          </a>
+          <a class="hero-link" href="https://hongxin.github.io/build-your-own-x/" target="_blank">
+            <svg viewBox="0 0 16 16"><path d="M4.715 6.542L3.343 7.914a3 3 0 104.243 4.243l1.828-1.829A3 3 0 008.586 5.5L8 6.086a1.002 1.002 0 00-.154.199 2 2 0 01.861 3.337L6.88 11.45a2 2 0 11-2.83-2.83l.793-.792a4.018 4.018 0 01-.128-1.287z"/><path d="M6.586 4.672A3 3 0 007.414 9.5l.775-.776a2 2 0 01-.896-3.346L9.12 3.55a2 2 0 112.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 10-4.243-4.243L6.586 4.672z"/></svg>
+            <span data-i18n="projects_link">Projects</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-interests">
+      <span class="interest-pill" data-i18n="int_cg">Computer Graphics</span>
+      <span class="interest-pill" data-i18n="int_vis">Visualization</span>
+      <span class="interest-pill" data-i18n="int_ai">AI-assisted Dev</span>
+      <span class="interest-pill" data-i18n="int_vm">Visual Modeling</span>
+      <span class="interest-pill" data-i18n="int_sys">Systems Programming</span>
     </div>
   </div>
 </section>
 
 <div class="main">
 
-  <!-- Research Interests -->
-  <div class="interests">
-    <span class="interest" data-i18n="int_cg">Computer Graphics</span>
-    <span class="interest" data-i18n="int_vis">Visualization</span>
-    <span class="interest" data-i18n="int_ai">AI-assisted Dev</span>
-    <span class="interest" data-i18n="int_vm">Visual Modeling</span>
-    <span class="interest" data-i18n="int_sys">Systems Programming</span>
-    <span class="interest" data-i18n="int_edu">CS Education</span>
-  </div>
-
   <!-- Projects -->
-  <section class="section">
+  <section class="section" id="projects">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(88,166,255,0.12)">&#9881;</div>
+      <div class="section-icon" style="background:var(--zju-blue-pale)">&#9881;</div>
       <div class="section-title" data-i18n="sec_projects">Open Source</div>
     </div>
     <div class="projects">
-
       <a class="card" href="https://hongxin.github.io/build-your-own-x/" target="_blank">
-        <div class="card-emoji">&#127922;</div>
-        <div class="card-title">Build Your Own X</div>
-        <div class="card-desc" data-i18n="desc_byx">Single-file HTML projects from scratch — Tetris (Human vs AI), Raycaster Maze, Weather Clock, Data Dashboard. Learning by building.</div>
-        <div class="card-tags">
-          <span class="tag">Canvas</span>
-          <span class="tag">Web Audio</span>
-          <span class="tag">AI</span>
-          <span class="tag">ECharts</span>
-        </div>
+        <div class="card-head"><span class="card-emoji">&#127922;</span><span class="card-title">Build Your Own X</span></div>
+        <div class="card-desc" data-i18n="desc_byx">Single-file HTML projects from scratch — Tetris (Human vs AI), Raycaster Maze, Weather Clock, Data Dashboard.</div>
+        <div class="card-tags"><span class="tag">Canvas</span><span class="tag">Web Audio</span><span class="tag">AI</span><span class="tag">ECharts</span></div>
       </a>
-
       <a class="card" href="https://github.com/hongxin/build-your-own-x/tree/main/skills" target="_blank">
-        <div class="card-emoji">&#9775;</div>
-        <div class="card-title">ZPower</div>
-        <div class="card-desc" data-i18n="desc_zp">Five Elements skill framework for AI-assisted development with Claude Code. Observe, Design, Build, Verify, Evolve.</div>
-        <div class="card-tags">
-          <span class="tag">Claude Code</span>
-          <span class="tag" data-i18n="tag_five">Five Elements</span>
-          <span class="tag">Skills</span>
-        </div>
+        <div class="card-head"><span class="card-emoji">&#9775;</span><span class="card-title">ZPower</span></div>
+        <div class="card-desc" data-i18n="desc_zp">Five Elements skill framework for AI-assisted development with Claude Code.</div>
+        <div class="card-tags"><span class="tag">Claude Code</span><span class="tag" data-i18n="tag_five">Five Elements</span><span class="tag">Skills</span></div>
       </a>
-
       <a class="card" href="https://github.com/hongxin/vizmodeling" target="_blank">
-        <div class="card-emoji">&#128202;</div>
-        <div class="card-title">VizModeling</div>
-        <div class="card-desc" data-i18n="desc_viz">Interactive visual modeling course — bridging theory and practice with hands-on demos.</div>
-        <div class="card-tags">
-          <span class="tag">JavaScript</span>
-          <span class="tag" data-i18n="tag_vis">Visualization</span>
-        </div>
+        <div class="card-head"><span class="card-emoji">&#128202;</span><span class="card-title">VizModeling</span></div>
+        <div class="card-desc" data-i18n="desc_viz">Interactive visual modeling course — bridging theory and practice.</div>
+        <div class="card-tags"><span class="tag">JavaScript</span><span class="tag" data-i18n="tag_vis">Visualization</span></div>
       </a>
-
       <a class="card" href="https://github.com/hongxin/RealConsole" target="_blank">
-        <div class="card-emoji">&#128187;</div>
-        <div class="card-title">RealConsole</div>
-        <div class="card-desc" data-i18n="desc_rc">A smart console application built in Rust — exploring systems programming from scratch.</div>
-        <div class="card-tags">
-          <span class="tag">Rust</span>
-          <span class="tag" data-i18n="tag_cli">CLI</span>
-        </div>
+        <div class="card-head"><span class="card-emoji">&#128187;</span><span class="card-title">RealConsole</span></div>
+        <div class="card-desc" data-i18n="desc_rc">A smart console application built in Rust.</div>
+        <div class="card-tags"><span class="tag">Rust</span><span class="tag">CLI</span></div>
       </a>
+    </div>
+  </section>
 
+  <!-- Publications -->
+  <section class="section" id="publications">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--zju-red-pale)">&#128220;</div>
+      <div class="section-title" data-i18n="sec_pubs">Selected Publications</div>
+    </div>
+    <div class="pub-filters">
+      <button class="pub-filter active" data-filter="all" data-i18n="filter_all">All</button>
+      <button class="pub-filter" data-filter="vis" data-i18n="filter_vis">Visualization</button>
+      <button class="pub-filter" data-filter="cg" data-i18n="filter_cg">Graphics</button>
+      <button class="pub-filter" data-filter="ai" data-i18n="filter_ai">AI / ML</button>
+    </div>
+    <div id="pub-list">
+      <!-- Populated by JS -->
+    </div>
+    <div style="text-align:center;margin-top:16px;">
+      <a href="https://scholar.google.com/citations?user=NQZdq10AAAAJ" target="_blank" style="font-size:13px;color:var(--zju-blue);font-weight:500;" data-i18n="view_all_pubs">View all on Google Scholar &rarr;</a>
     </div>
   </section>
 
   <!-- Teaching -->
-  <section class="section">
+  <section class="section" id="teaching">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(126,231,135,0.12)">&#127891;</div>
+      <div class="section-icon" style="background:#ecfdf5">&#127891;</div>
       <div class="section-title" data-i18n="sec_teaching">Teaching</div>
     </div>
     <div class="teaching-list">
-
       <a class="teaching-item" href="https://github.com/hongxin/csmath-2019" target="_blank">
         <div>
           <div class="teaching-name">CS Mathematics</div>
           <div class="teaching-desc" data-i18n="desc_csmath">Mathematics for first-year CS PhD students @ ZJU</div>
         </div>
-        <span class="teaching-badge badge-phd" data-i18n="tag_phd">PhD</span>
+        <span class="badge badge-phd" data-i18n="tag_phd">PhD</span>
       </a>
-
       <a class="teaching-item" href="https://github.com/hongxin/CGCourse" target="_blank">
         <div>
           <div class="teaching-name">Computer Graphics</div>
-          <div class="teaching-desc" data-i18n="desc_cg">Computer Graphics course @ ZJU — rendering, modeling, animation</div>
+          <div class="teaching-desc" data-i18n="desc_cg">Rendering, modeling, animation @ ZJU</div>
         </div>
-        <span class="teaching-badge badge-undergrad" data-i18n="tag_undergrad">Undergrad</span>
+        <span class="badge badge-undergrad" data-i18n="tag_undergrad">Undergrad</span>
       </a>
-
     </div>
   </section>
 
   <!-- Philosophy -->
   <section class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(167,139,250,0.12)">&#128161;</div>
+      <div class="section-icon" style="background:var(--zju-blue-pale)">&#128161;</div>
       <div class="section-title" data-i18n="sec_philosophy">Philosophy</div>
     </div>
     <div class="philosophy">
@@ -584,145 +653,113 @@ a { color: inherit; text-decoration: none; }
 
 </div>
 
-<!-- Footer -->
-<footer class="footer" data-i18n="footer">Hongxin Zhang · Zhejiang University</footer>
+<footer class="footer">
+  <span data-i18n="footer_name">Hongxin Zhang</span> · <span class="footer-zju" data-i18n="footer_zju">Zhejiang University</span>
+</footer>
 
 <script>
-// ===== Hero particle animation =====
-const hc = document.getElementById('hero-canvas');
-const hctx = hc.getContext('2d');
-let particles = [];
+// ===== Publications Data =====
+const PUBS = [
+  { year: 2026, title: 'Doc2AHP: Inferring Structured Multi-Criteria Decision Models via Semantic Trees with LLMs', authors: 'Hongjia Wu, Shuai Zhou, <b>Hongxin Zhang</b>, Wei Chen', venue: 'arXiv Preprint', cat: 'ai' },
+  { year: 2025, title: 'Retrieval Augmented Decision-Making: A Requirements-Driven, Multi-Criteria Framework', authors: 'Hongjia Wu, <b>Hongxin Zhang</b>, Wei Chen, Jiazhi Xia', venue: 'arXiv Preprint', cat: 'ai' },
+  { year: 2024, title: 'Sample2SQL: A Visual Interface for Querying Risky Enterprises', authors: 'Hongjia Wu, Shan-Chen Zou, Jiazhi Xia, <b>Hongxin Zhang</b>, Wei Chen', venue: 'IEEE PacificVis 2024', cat: 'vis' },
+  { year: 2023, title: 'Cloud-based Fusion Rendering for AR Applications', authors: 'Jing Tang, Yuxi Zhou, Zhenyu Chen, Cheng Chen, Gang Xiong, <b>Hongxin Zhang</b>', venue: 'DTPI 2023', cat: 'cg' },
+  { year: 2022, title: 'DanceVis: Toward Better Understanding of Online Cheer and Dance Training', authors: 'Hong Guo, Shan-Chen Zou, YiLin Xu, Han Yang, Jian Wang, <b>Hongxin Zhang</b>, Wei Chen', venue: 'Journal of Visualization, 25(1)', cat: 'vis' },
+  { year: 2021, title: 'Visual Exploration of Urban Functional Zones Based on Augmented Nonnegative Tensor Factorization', authors: 'Liyan Liu, <b>Hongxin Zhang</b>, Jiaxin Liu, Shangching Liu, Wei Chen, Jiaju Man', venue: 'Journal of Visualization, 24(2)', cat: 'vis' },
+  { year: 2020, title: 'Cloud-to-end Rendering and Storage Management for Virtual Reality in Experimental Education', authors: '<b>Hongxin Zhang</b>, Jin Zhang, Xue Yin, Kan Zhou, Zhigeng Pan', venue: 'Virtual Reality & Intelligent Hardware, 2(4)', cat: 'cg' },
+  { year: 2020, title: 'Attention Based Graph Convolution Networks for Intelligent Traffic Flow Analysis', authors: '<b>Hongxin Zhang</b>, Jiaxin Liu, Ying Tang, Gang Xiong', venue: 'IEEE CASE 2020', cat: 'ai' },
+  { year: 2019, title: 'Visual Analysis of Traffic Data via Spatio-temporal Graphs and Interactive Topic Modeling', authors: 'Liyan Liu, <b>Hongxin Zhang</b>, Jiaxin Liu, Jiaju Man', venue: 'Journal of Visualization, 22(1)', cat: 'vis' },
+  { year: 2018, title: 'Visual Analysis of Traffic Data Based on Topic Modeling (ChinaVis 2017)', authors: 'Ying Tang, Fengfan Sheng, <b>Hongxin Zhang</b>, Chaojie Shi, Xujia Qin, Jing Fan', venue: 'Journal of Visualization, 21(4)', cat: 'vis' },
+  { year: 2017, title: 'ExploreTree: Interactive Tree Modeling in Semantic Trait Space with Online Intent Learning', authors: 'Yinhui Yang, Rui Wang, <b>Hongxin Zhang</b>, Hujun Bao', venue: 'Graphical Models, 91', cat: 'cg' },
+  { year: 2017, title: 'End-To-End Face Detection and Recognition', authors: 'Liying Chi, <b>Hongxin Zhang</b>, Mingxiu Chen', venue: 'arXiv Preprint', cat: 'ai' },
+  { year: 2014, title: 'Variational Tree Synthesis', authors: 'Rui Wang, Yinhui Yang, <b>Hongxin Zhang</b>, Hujun Bao', venue: 'Computer Graphics Forum, 33(8)', cat: 'cg' },
+  { year: 2010, title: 'Repairing Topological Inconsistency of Mesh Sequences', authors: 'Wei Feng, Jin Huang, <b>Hongxin Zhang</b>, Hujun Bao', venue: 'Computer Animation and Virtual Worlds', cat: 'cg' },
+  { year: 2006, title: 'Non-uniform Differential Mesh Deformation', authors: '<b>Hongxin Zhang</b>, Jieqing Feng, Qunsheng Peng', venue: 'Computer Graphics International 2006', cat: 'cg' },
+  { year: 2005, title: 'Poisson Shape Interpolation', authors: '<b>Hongxin Zhang</b>, Jieqing Feng, Qunsheng Peng', venue: 'ACM Symposium on Solid and Physical Modeling', cat: 'cg' },
+];
 
-function resizeHero() {
-  const r = window.devicePixelRatio || 1;
-  const rect = hc.parentElement.getBoundingClientRect();
-  hc.width = rect.width * r;
-  hc.height = rect.height * r;
-  hctx.scale(r, r);
-}
+let currentFilter = 'all';
 
-function initParticles() {
-  particles = [];
-  const rect = hc.parentElement.getBoundingClientRect();
-  const count = Math.floor(rect.width * rect.height / 8000);
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * rect.width,
-      y: Math.random() * rect.height,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      size: Math.random() * 2 + 0.5,
-      alpha: Math.random() * 0.4 + 0.1,
-    });
-  }
-}
+function renderPubs() {
+  const list = document.getElementById('pub-list');
+  const filtered = currentFilter === 'all' ? PUBS : PUBS.filter(p => p.cat === currentFilter);
 
-function drawHero() {
-  const rect = hc.parentElement.getBoundingClientRect();
-  const w = rect.width, h = rect.height;
-  hctx.clearRect(0, 0, w, h);
-
-  // Draw connections
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 120) {
-        hctx.beginPath();
-        hctx.strokeStyle = `rgba(88,166,255,${0.06 * (1 - dist / 120)})`;
-        hctx.lineWidth = 0.5;
-        hctx.moveTo(particles[i].x, particles[i].y);
-        hctx.lineTo(particles[j].x, particles[j].y);
-        hctx.stroke();
-      }
+  let html = '';
+  let lastYear = null;
+  for (const p of filtered) {
+    if (p.year !== lastYear) {
+      html += `<div class="pub-year">${p.year}</div>`;
+      lastYear = p.year;
     }
+    html += `<div class="pub-item">
+      <div class="pub-title">${p.title}</div>
+      <div class="pub-authors">${p.authors.replace(/<b>/g, '<span class="me">').replace(/<\/b>/g, '</span>')}</div>
+      <div class="pub-venue"><span class="venue-name">${p.venue}</span></div>
+    </div>`;
   }
-
-  // Draw particles
-  for (const p of particles) {
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > w) p.vx *= -1;
-    if (p.y < 0 || p.y > h) p.vy *= -1;
-
-    hctx.beginPath();
-    hctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    hctx.fillStyle = `rgba(88,166,255,${p.alpha})`;
-    hctx.fill();
-  }
-
-  requestAnimationFrame(drawHero);
+  list.innerHTML = html;
 }
 
-resizeHero();
-initParticles();
-drawHero();
-window.addEventListener('resize', () => { resizeHero(); initParticles(); });
+document.querySelectorAll('.pub-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pub-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderPubs();
+  });
+});
+
+renderPubs();
 
 // ===== i18n =====
 const I18N = {
   en: {
-    nav_brand: 'Hongxin Zhang',
-    name: 'Hongxin Zhang',
+    nav_brand: 'Hongxin Zhang', name: 'Hongxin Zhang',
     tagline: 'Associate Professor · Zhejiang University',
-    website: 'Website',
-    projects_link: 'Projects',
-    int_cg: 'Computer Graphics',
-    int_vis: 'Visualization',
-    int_ai: 'AI-assisted Dev',
-    int_vm: 'Visual Modeling',
-    int_sys: 'Systems Programming',
-    int_edu: 'CS Education',
-    sec_projects: 'Open Source',
-    sec_teaching: 'Teaching',
-    sec_philosophy: 'Philosophy',
-    desc_byx: 'Single-file HTML projects from scratch — Tetris (Human vs AI), Raycaster Maze, Weather Clock, Data Dashboard. Learning by building.',
-    desc_zp: 'Five Elements skill framework for AI-assisted development with Claude Code. Observe, Design, Build, Verify, Evolve.',
-    desc_viz: 'Interactive visual modeling course — bridging theory and practice with hands-on demos.',
-    desc_rc: 'A smart console application built in Rust — exploring systems programming from scratch.',
+    nav_proj: 'Projects', nav_pubs: 'Publications', nav_teach: 'Teaching',
+    website: 'Homepage', projects_link: 'Projects',
+    int_cg: 'Computer Graphics', int_vis: 'Visualization',
+    int_ai: 'AI-assisted Dev', int_vm: 'Visual Modeling', int_sys: 'Systems Programming',
+    sec_projects: 'Open Source', sec_pubs: 'Selected Publications',
+    sec_teaching: 'Teaching', sec_philosophy: 'Philosophy',
+    desc_byx: 'Single-file HTML projects from scratch — Tetris (Human vs AI), Raycaster Maze, Weather Clock, Data Dashboard.',
+    desc_zp: 'Five Elements skill framework for AI-assisted development with Claude Code.',
+    desc_viz: 'Interactive visual modeling course — bridging theory and practice.',
+    desc_rc: 'A smart console application built in Rust.',
     desc_csmath: 'Mathematics for first-year CS PhD students @ ZJU',
-    desc_cg: 'Computer Graphics course @ ZJU — rendering, modeling, animation',
-    tag_five: 'Five Elements',
-    tag_vis: 'Visualization',
-    tag_cli: 'CLI',
-    tag_phd: 'PhD',
-    tag_undergrad: 'Undergrad',
+    desc_cg: 'Rendering, modeling, animation @ ZJU',
+    tag_five: 'Five Elements', tag_vis: 'Visualization',
+    tag_phd: 'PhD', tag_undergrad: 'Undergrad',
+    filter_all: 'All', filter_vis: 'Visualization', filter_cg: 'Graphics', filter_ai: 'AI / ML',
+    view_all_pubs: 'View all on Google Scholar \u2192',
     quote: '"What I cannot create, I do not understand."',
     quote_author: '— Richard Feynman',
     philosophy_body: 'Complex systems are made of simple parts. Build them from scratch and you\'ll truly understand. Every project here starts from zero — no frameworks, no magic, just fundamentals.',
-    footer: 'Hongxin Zhang · Zhejiang University',
+    footer_name: 'Hongxin Zhang', footer_zju: 'Zhejiang University',
   },
   zh: {
-    nav_brand: '张宏鑫',
-    name: '张宏鑫',
+    nav_brand: '张宏鑫', name: '张宏鑫',
     tagline: '副教授 · 浙江大学',
-    website: '个人主页',
-    projects_link: '项目集',
-    int_cg: '计算机图形学',
-    int_vis: '可视化',
-    int_ai: 'AI 辅助开发',
-    int_vm: '可视化建模',
-    int_sys: '系统编程',
-    int_edu: '计算机教育',
-    sec_projects: '开源项目',
-    sec_teaching: '教学课程',
-    sec_philosophy: '信念',
-    desc_byx: '从零开始的单文件 HTML 项目集——俄罗斯方块（人类 vs AI）、光线投射迷宫、天气时钟、数据大屏。造物即修行。',
-    desc_zp: '为 Claude Code 设计的五行 AI 辅助开发框架：观·谋·行·验·化循环。',
-    desc_viz: '可视化建模交互式课程——用动手实践连接理论与应用。',
-    desc_rc: '用 Rust 从零构建的智能控制台应用——系统编程探索。',
+    nav_proj: '项目', nav_pubs: '论文', nav_teach: '教学',
+    website: '个人主页', projects_link: '项目集',
+    int_cg: '计算机图形学', int_vis: '可视化',
+    int_ai: 'AI 辅助开发', int_vm: '可视化建模', int_sys: '系统编程',
+    sec_projects: '开源项目', sec_pubs: '代表性论文',
+    sec_teaching: '教学课程', sec_philosophy: '信念',
+    desc_byx: '从零开始的单文件 HTML 项目集——俄罗斯方块（人机对战）、光线投射迷宫、天气时钟、数据大屏。',
+    desc_zp: '为 Claude Code 设计的五行 AI 辅助开发框架：观·谋·行·验·化。',
+    desc_viz: '可视化建模交互式课程——连接理论与实践。',
+    desc_rc: '用 Rust 从零构建的智能控制台应用。',
     desc_csmath: '浙大计算机科学一年级博士生数学课',
-    desc_cg: '浙大计算机图形学课程——渲染、建模、动画',
-    tag_five: '五行',
-    tag_vis: '可视化',
-    tag_cli: '命令行',
-    tag_phd: '博士',
-    tag_undergrad: '本科',
+    desc_cg: '渲染、建模、动画 · 浙大',
+    tag_five: '五行', tag_vis: '可视化',
+    tag_phd: '博士', tag_undergrad: '本科',
+    filter_all: '全部', filter_vis: '可视化', filter_cg: '图形学', filter_ai: 'AI / 机器学习',
+    view_all_pubs: '在 Google Scholar 查看全部 \u2192',
     quote: '"What I cannot create, I do not understand."',
     quote_author: '— Richard Feynman',
     philosophy_body: '复杂系统由简单部分组成。从零开始亲手造一遍，才能真正理解。这里的每个项目都从零出发——没有框架、没有魔法，只有基础原理。',
-    footer: '张宏鑫 · 浙江大学',
+    footer_name: '张宏鑫', footer_zju: '浙江大学',
   }
 };
 
@@ -731,17 +768,26 @@ let lang = 'en';
 function applyLang() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
-    if (I18N[lang][key]) el.textContent = I18N[lang][key];
+    if (I18N[lang][key] !== undefined) {
+      if (key === 'view_all_pubs') el.innerHTML = I18N[lang][key];
+      else el.textContent = I18N[lang][key];
+    }
   });
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-  document.title = lang === 'zh' ? '张宏鑫 · 浙江大学' : 'Hongxin Zhang';
+  document.title = lang === 'zh' ? '张宏鑫 · 浙江大学' : 'Hongxin Zhang · Zhejiang University';
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => { lang = btn.dataset.lang; applyLang(); });
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
 </script>
 </body>
